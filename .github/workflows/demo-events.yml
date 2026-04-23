@@ -35,16 +35,34 @@ on:
           - Awesome
           - OK
           - Na
+env:
+  GREETING_WORD: Hello
+  YOUR_NAME: ${{ inputs.yourName }}
 
 jobs:
   Greeting:
     runs-on: ubuntu-latest
+    env:
+      GREETING_WORD: Good afternoon
     steps:
-      - name: Say hello
-        run: echo "Good morning" 
-      - name: Your name
-        run: echo ${{ inputs.yourName}}
+      - name: Say hello (step level env variables)
+        env:
+          GREETING_WORD: Good morning
+        run: echo ${{ env.GREETING_WORD }}
+      - name: Say hello (job level env variables)
+        run: echo ${{ env.GREETING_WORD }}
       - name: Feeling good
         run: echo ${{ inputs.feelingGood }}
+      - name: Print only if you are feeling good
+        run: echo "Great! Have a nice workshop!"
+        if: ${{ inputs.feelingGood == true }}
+      - name: Print only if you are feeling bad
+        run: echo "No worries! I'm here with you 😊"
+        if: inputs.feelingGood == false
       - name: GitHub Actions is
         run: echo ${{ inputs.howYouFindGitHubActions }}
+  Another_Job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say hello (workflow level env variables)
+        run: echo ${{ env.GREETING_WORD }}
