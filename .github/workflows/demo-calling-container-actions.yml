@@ -1,9 +1,9 @@
 name: Demo calling container action
 run-name: Demo calling container action
 
-on:
-  workflow_dispatch
-
+on: 
+  workflow_dispatch:
+  
 jobs:
   Demo:
     runs-on: ubuntu-latest
@@ -15,6 +15,6 @@ jobs:
         uses: ./.github/actions/demo-container-actions
         with:
           greeting: "Good afternoon"
-          name: "Thomas"
+          name: "Thanh"
       - name: Show output from the last step
-        run: echo '${{ steps.greeting-step-outputs.greeting-text }}'
+        run: echo '${{ steps.greeting-step.outputs.greeting-text }}'
