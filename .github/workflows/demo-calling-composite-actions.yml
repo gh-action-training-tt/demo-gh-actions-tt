@@ -10,9 +10,9 @@ jobs:
     steps:
       - name: Check out the repo to the runner
         uses: actions/checkout@v4
-      - name: Demo calling container action
+      - name: Demo calling composite action
         id: greeting-step
-        uses: ./.github/actions/demo-container-actions
+        uses: ./.github/actions/demo-composite-actions
         with:
           greeting: "Good afternoon"
           name: "Thanh"
