@@ -13,7 +13,7 @@ inputs:
 outputs:
   greeting-text:
     description: "Greeting text"
-    value: ${{ steps.generate-output-step.outsputs.output }}
+    value: ${{ steps.generate-output-step.outputs.output }}
     
 runs:
   using: composite
@@ -22,8 +22,8 @@ runs:
       run: echo '${{ inputs.greeting }}, ${{ inputs.name }}'
       shell: bash
     - name: Generate output
-      id: genereate-output-step
+      id: generate-output-step
       env:
         OUTPUT: '${{ inputs.greeting }}, ${{ inputs.name }}'
-      run:: echo "output=$OUTPUT" >> $GITHUB_OUTPUT
+      run: echo "output=$OUTPUT" >> $GITHUB_OUTPUT
       shell: bash
