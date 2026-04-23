@@ -1,5 +1,5 @@
 name: Demo calling container action
-rune-name: Demo calling container action
+run-name: Demo calling container action
 
 on:
   workflow_dispatch
