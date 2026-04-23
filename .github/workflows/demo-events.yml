@@ -13,7 +13,11 @@ on:
     types:
       - opened
       - closed
+  schedule:
+    - cron: 0 9 * * *
+    - cron: 0 12 * * 0
 
+  workflow_dispatch:
 jobs:
   Greeting:
     runs-on: ubuntu-latest
